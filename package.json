@@ -1,0 +1,30 @@
+{
+  "name": "jichangzhuanxian.blog",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "专线机场与网络技术知识库 - 深度线路架构、协议选型与性能评测",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs && node scripts/post-build-seo.cjs && pagefind --site docs/.vitepress/dist",
+    "build:vitepress": "vitepress build docs",
+    "preview": "vitepress preview docs",
+    "pagefind": "pagefind --site docs/.vitepress/dist"
+  },
+  "keywords": [
+    "专线机场",
+    "IPLC机场",
+    "IEPL机场",
+    "机场推荐",
+    "网络排障",
+    "代理协议",
+    "VLESS",
+    "Hysteria2"
+  ],
+  "author": "专线技术实验室",
+  "license": "MIT",
+  "devDependencies": {
+    "pagefind": "^1.4.0",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.13"
+  }
+}

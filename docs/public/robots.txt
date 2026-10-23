@@ -1,0 +1,51 @@
+User-agent: *
+Disallow: /go/
+Allow: /
+
+# Explicit Search Engine Bots
+User-agent: Googlebot
+Disallow: /go/
+Allow: /
+
+User-agent: Googlebot-Image
+Disallow: /go/
+Allow: /
+
+User-agent: Bingbot
+Disallow: /go/
+Allow: /
+
+User-agent: Baiduspider
+Disallow: /go/
+Allow: /
+
+User-agent: yisouspider
+Disallow: /go/
+Allow: /
+
+# Dedicated AI Search & Retrieval Bots for GEO / AEO
+User-agent: GPTBot
+Disallow: /go/
+Allow: /
+
+User-agent: PerplexityBot
+Disallow: /go/
+Allow: /
+
+User-agent: ClaudeBot
+Disallow: /go/
+Allow: /
+
+User-agent: Google-Extended
+Disallow: /go/
+Allow: /
+
+User-agent: Applebot-Extended
+Disallow: /go/
+Allow: /
+
+User-agent: CCBot
+Disallow: /go/
+Allow: /
+
+Sitemap: https://jichangzhuanxian.blog/sitemap.xml

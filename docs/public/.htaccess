@@ -1,0 +1,63 @@
+# ====================================================================
+# Apache Configuration for jichangzhuanxian.blog (VitePress Static Site)
+# ====================================================================
+
+Options -MultiViews
+RewriteEngine On
+RewriteBase /
+
+# 1. Force HTTPS & Canonical Non-WWW Host
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://jichangzhuanxian.blog%{REQUEST_URI} [L,R=301]
+
+# 2. Support Clean URLs (route /zhuanxian to /zhuanxian.html or /zhuanxian/index.html)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}/index.html -f
+RewriteRule ^(.*)/?$ $1/index.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^\.]+)$ $1.html [L]
+
+# 3. Security & Anti-AI Crawler Footprint Headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+  # Prevent algorithmic tracking and affiliate indexing on /go/ endpoints
+  SetEnvIf Request_URI "^/go/" NOINDEX_BOT=1
+  Header set X-Robots-Tag "noindex, nofollow, noarchive" env=NOINDEX_BOT
+</IfModule>
+
+# 4. Gzip & Deflate Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+  AddOutputFilterByType DEFLATE application/xml application/rss+xml application/atom+xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# 5. Browser Caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+
+  # HTML files: short cache or revalidate
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # Static Assets (hashed js, css, fonts)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# 6. Error Documents
+ErrorDocument 404 /404.html

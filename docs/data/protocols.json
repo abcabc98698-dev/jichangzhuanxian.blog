@@ -1,0 +1,44 @@
+{
+  "protocols": [
+    {
+      "id": "vless-reality",
+      "name": "VLESS-Reality",
+      "baseProtocol": "TCP + TLS 握手特征借用",
+      "cipherFeature": "免除服务端自建证书，借用真实合规大型海外站点（如 Apple, Cloudflare, Microsoft）的 TLS 证书公钥，实现客户端真实证书链验证",
+      "gfwResistance": "极高 (当前公网反探测第一梯队)",
+      "latencyOverhead": "极低 (无额外双重握手，0-RTT 恢复)",
+      "recommendedScenarios": ["公网直连 VPS 扶墙", "防主动探测", "移动网络抗干扰"],
+      "kernelRequirement": "Xray-core >= 1.8.0, Sing-box >= 1.3.0"
+    },
+    {
+      "id": "shadowsocks-2022",
+      "name": "Shadowsocks-2022",
+      "baseProtocol": "现代对称密码学 AEAD (BLAKE3-AES-256-GCM / 2022-AEAD-2022-blake3)",
+      "cipherFeature": "消除旧版 SS 的主动探测漏洞，引入严格重放保护窗口与会话密钥派生",
+      "gfwResistance": "在内网专线 (IPLC/IEPL) 表现无敌；公网直连会被 GFW 基于全熵流量识别封锁",
+      "latencyOverhead": "几乎为零 (纯对称加密，硬件加速吞吐极高，超省电)",
+      "recommendedScenarios": ["IEPL / IPLC 专线内网传输首选", "千兆高吞吐", "路由器轻量转发"],
+      "kernelRequirement": "Sing-box, Shadowsocks-Rust, Clash.Meta"
+    },
+    {
+      "id": "trojan",
+      "name": "Trojan-GFW",
+      "baseProtocol": "标准 TLS 1.3 + HTTPS 假装伪装",
+      "cipherFeature": "完全模仿标准 Web 浏览行为，证书与域名强绑定，非代理请求直接 fallback 到伪装网站",
+      "gfwResistance": "高 (成熟稳定)",
+      "latencyOverhead": "标准 TLS 握手开销 (1-RTT)",
+      "recommendedScenarios": ["常规中转机场", "多平台老旧客户端高兼容度"],
+      "kernelRequirement": "全客户端通用支持 (Clash, Shadowrocket, Quantumult X, v2rayN 等)"
+    },
+    {
+      "id": "hysteria2",
+      "name": "Hysteria 2",
+      "baseProtocol": "修改版 UDP / QUIC + Brutal 专有拥塞控制算法",
+      "cipherFeature": "主动对抗运营商 UDP 恶性限速与拥塞丢包，以激进发包率强制填满预设带宽",
+      "gfwResistance": "极高 (在严重 QoS 劣质公网线路上具有逆风翻盘能力)",
+      "latencyOverhead": "UDP 极低，0-RTT 快速建连",
+      "recommendedScenarios": ["晚高峰公网直连恶劣网络", "校园网/晚高峰移动 4G/5G 拥塞救砖"],
+      "kernelRequirement": "Sing-box, Clash.Meta (Mihomo), Hysteria 原生客户端"
+    }
+  ]
+}

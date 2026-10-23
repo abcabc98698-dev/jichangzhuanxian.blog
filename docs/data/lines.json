@@ -1,0 +1,64 @@
+{
+  "lineCategories": [
+    {
+      "type": "IPLC",
+      "fullName": "International Private Leased Circuit (国际点对点租用专线)",
+      "layer": "OSI 二层 (数据链路层 / TDM时分复用 / SDH/OTN)",
+      "gfwBypass": "物理级/信元级不过 GFW，境内境外端点直接走海底光缆/跨境陆缆专用物理信道",
+      "packetLossRate": "< 0.05% (工业级无丢包传输)",
+      "jitterMs": "0.5 - 1.5 ms (几乎无抖动)",
+      "peakStability": "极其稳定，受政治敏感期、两会或国际公网突发拥塞零影响",
+      "costLevel": "极高 (每 Gbps 月租数万元人民币)",
+      "coreAdvantage": "绝对稳定，无干扰，超低抖动，游戏与实时金融交易首选",
+      "coreDisadvantage": "带宽单价昂贵，成本极高；物理光缆断纤时切换周期依赖运营商主备倒换"
+    },
+    {
+      "type": "IEPL",
+      "fullName": "International Ethernet Private Line (国际以太网虚拟专线)",
+      "layer": "以太网接口二层虚拟专线 (MPLS / EoMPLS / OTN 承载)",
+      "gfwBypass": "逻辑不过 GFW，基于运营商 MPLS 骨干内网或云厂商私有互联传输",
+      "packetLossRate": "< 0.1% (企业级 SLA)",
+      "jitterMs": "0.8 - 2.5 ms",
+      "peakStability": "极高稳定性，不受国际公网高峰期 QoS 丢包限制",
+      "costLevel": "高 (略低于物理 IPLC，具有极佳的带宽弹性扩展性)",
+      "coreAdvantage": "兼顾 IPLC 级的不过墙稳定性与现代以太网带宽弹性，性价比极高，主流高端机场核心骨干",
+      "coreDisadvantage": "国内入口如遇 DDoS 攻击需依赖 BGP Anycast 防护清洗"
+    },
+    {
+      "type": "BGP-Transit",
+      "fullName": "国内 BGP 入口 + 隧道加密中转 (公网跨境外跨)",
+      "layer": "OSI 三层 / 四层 (国内公网 BGP 入口，中间走公网加密隧道如 TLS/WireGuard/TLS-Anycast)",
+      "gfwBypass": "过 GFW 审查 (但流量全程经过端到端加密，GFW 只能识别为大流量加密隧道并可能触发重置或丢包)",
+      "packetLossRate": "日常 0.5% - 2%，晚高峰可升至 3% - 8%",
+      "jitterMs": "5.0 - 25.0 ms",
+      "peakStability": "中等，视境外公网骨干负载及 GFW 封锁强度而定，敏感期可能出现断流或阻断",
+      "costLevel": "中等 (带宽成本远低于内网专线)",
+      "coreAdvantage": "成本亲民，带宽充裕，可提供海量大流量套餐",
+      "coreDisadvantage": "遇敏感期可能断连；晚高峰受国际骨干拥塞影响，延迟抖动显著"
+    },
+    {
+      "type": "CN2-GIA",
+      "fullName": "China Telecom Next Generation Carrier (电信精品网 AS4809 双向 GIA)",
+      "layer": "公网精品三层路由",
+      "gfwBypass": "过 GFW，但享受电信最高优先级 QOS 保障与独立出海光缆",
+      "packetLossRate": "0.2% - 1.0%",
+      "jitterMs": "2.0 - 6.0 ms",
+      "peakStability": "高，但仍有敏感期被封锁节点 IP 的风险",
+      "costLevel": "高 (公网 VPS 中最贵线路)",
+      "coreAdvantage": "直连节点中单线程速度最快，晚高峰拥塞极低",
+      "coreDisadvantage": "需配合前置抗封锁协议 (如 VLESS Reality)，IP 暴露易被 GFW 定向拉黑"
+    },
+    {
+      "type": "Public-Direct",
+      "fullName": "普通公网直连 (163 AS4134 / 联通 4837 / 移动 CMI)",
+      "layer": "普通国际公网互联",
+      "gfwBypass": "全面过 GFW，处于国际出口互联交换中心最末级 QoS",
+      "packetLossRate": "晚高峰 10% - 35% 丢包",
+      "jitterMs": "30 - 150 ms (严重抖动)",
+      "peakStability": "极低，晚高峰经常出现 TCP 拥塞重传雪崩",
+      "costLevel": "极低 (白菜价)",
+      "coreAdvantage": "成本极其廉价",
+      "coreDisadvantage": "晚高峰无法观看 1080P，SSH 连接打字卡顿，丢包极其严重"
+    }
+  ]
+}

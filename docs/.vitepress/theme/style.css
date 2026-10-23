@@ -1,0 +1,288 @@
+:root {
+  --vp-c-brand-1: #2563eb;
+  --vp-c-brand-2: #1d4ed8;
+  --vp-c-brand-3: #1e40af;
+  --vp-c-brand-soft: #eff6ff;
+
+  --vp-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --vp-font-family-mono: "JetBrains Mono", "SF Mono", Consolas, Menlo, Monaco, Courier, monospace;
+
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #f8fafc;
+  --vp-c-bg-soft: #f8fafc;
+  
+  --vp-c-text-1: #0f172a;
+  --vp-c-text-2: #334155;
+  --vp-c-text-3: #64748b;
+  
+  --vp-c-divider: #e2e8f0;
+  --vp-c-border: #cbd5e1;
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #0284c7 100%);
+}
+
+.dark {
+  --vp-c-bg: #090d16;
+  --vp-c-bg-alt: #0f172a;
+  --vp-c-bg-soft: #141e33;
+
+  --vp-c-brand-1: #3b82f6;
+  --vp-c-brand-2: #60a5fa;
+  --vp-c-brand-3: #93bbfd;
+  --vp-c-brand-soft: rgba(59, 130, 246, 0.15);
+
+  --vp-c-text-1: #f8fafc;
+  --vp-c-text-2: #cbd5e1;
+  --vp-c-text-3: #94a3b8;
+
+  --vp-c-divider: #1e293b;
+  --vp-c-border: #334155;
+}
+
+/* Typography refinements */
+.vp-doc h1 {
+  font-size: 2.1rem;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc h2 {
+  font-size: 1.55rem;
+  font-weight: 750;
+  margin-top: 2.2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc p, .vp-doc li {
+  line-height: 1.8;
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc strong {
+  color: var(--vp-c-text-1);
+  font-weight: 700;
+}
+
+/* Responsive Table Enhancement */
+.vp-doc table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.vp-doc table th {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  font-weight: 700;
+  border: 1px solid var(--vp-c-divider);
+  padding: 12px 14px;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.vp-doc table td {
+  border: 1px solid var(--vp-c-divider);
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.vp-doc table tr:nth-child(even) td {
+  background: var(--vp-c-bg-alt);
+}
+
+.vp-doc blockquote {
+  border-left: 4px solid var(--vp-c-brand-1);
+  background: var(--vp-c-bg-soft);
+  padding: 14px 18px;
+  margin: 20px 0;
+  border-radius: 0 6px 6px 0;
+}
+
+/* Signal / Warning Cards Grid */
+.signal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin: 24px 0;
+}
+
+.signal-card {
+  padding: 16px 18px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  border-left: 4px solid #f43f5e;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.signal-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #e11d48;
+  background: #ffe4e6;
+  padding: 2px 8px;
+  border-radius: 4px;
+  width: fit-content;
+  margin-bottom: 8px;
+}
+
+.signal-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  margin-bottom: 6px;
+}
+
+.signal-desc {
+  font-size: 0.82rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.55;
+  margin: 0 !important;
+}
+
+/* Process Step Flow */
+.process-flow-container {
+  margin: 28px 0;
+  padding: 20px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+}
+
+.process-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.process-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+}
+
+.step-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--vp-c-brand-1);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-info-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  margin-bottom: 4px;
+}
+
+.step-info-desc {
+  font-size: 0.82rem;
+  color: var(--vp-c-text-2);
+  line-height: 1.5;
+  margin: 0 !important;
+}
+
+/* Cluster Navigation Cards Grid */
+.cluster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 24px 0 32px 0;
+}
+
+.cluster-card {
+  padding: 18px 20px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.cluster-card:hover {
+  border-color: var(--vp-c-brand-1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+
+.cluster-card-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  width: fit-content;
+  margin-bottom: 8px;
+}
+
+.cluster-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  margin-bottom: 6px;
+}
+
+.cluster-card-desc {
+  font-size: 0.85rem;
+  color: var(--vp-c-text-3);
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.cluster-card-action {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--vp-c-brand-1);
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Navbar Logo round avatar styling */
+.VPNavBarTitle .logo,
+.VPNavBarTitle img {
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  width: 32px !important;
+  height: 32px !important;
+  border: 2px solid var(--vp-c-brand-1) !important;
+  margin-right: 8px !important;
+}
